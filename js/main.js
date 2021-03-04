@@ -8,26 +8,25 @@ let choicesCmp = [
     "chien",
 ];
 
+//nombre de point du joueur en début de partie
 let playerPoints = 0;
 
 //------------------------------------------------------MES FONCTIONS------------------------------------------------------------
 
 //fonction permettant de générer un choix par l'ordinateur
-function generateChoice(){
+function generateChoiceRandom(){
     let random = Math.floor(Math.random() * Math.floor(choicesCmp.length));
     return choicesCmp[random];
 }
 
-let random = generateChoice();
-console.log(random);
+//////////////////////////////
 
 
 
 //fonction permettant de vérifier que le joueur a bien saisi une lettre
-function checkLetter(){
+function checkUserLetter(){
    for(let i = 0; i < 5 ; i++){
-        let choiceUser = prompt((random.replace(random, "_") + "\nmerci de saisir une lettre (entre a et z)"));
-        
+    let choiceUser = prompt("merci de saisir une lettre (entre a et z)");
         if (choiceUser.length === 1){
         return choiceUser.toLowerCase();
         }
@@ -38,30 +37,38 @@ function checkLetter(){
    }    
 };
 
-let choiceUsr = checkLetter();
-console.log(choiceUsr);
-
-
 //fonction permettant comparer la lettre choisi avec le mot de l'ordinateur
-
-function compareLetterWord(){
-    let compare = Array.from(random);
-    console.log(compare)
-
+function compareLetterOnWord(){
+    let compare = Array.from(choiceComputer);
+    console.log(compare);
     for(oneletter of compare){
         if(compare.includes(choiceUsr)){
             console.log("oui cette lettre est présente");
         } 
         else{
-            console.log("c'est perdu")
+            console.log("non cette lettre n'est pas dans le mot")
         }
     } 
 };
 
-compareLetterWord();
 
 
-// fonction permettant de remplacer les lettres du mot choisit par l'utilisateur 
+//-------------------------------------------------- Mon code --------------------------------------------------------------------------------------
+
+alert("Bonjour et bienvenue sur ce jeu du pendu. Prêt à jouer?"); 
+
+let choiceComputer = generateChoiceRandom();
+console.log(choiceComputer);
+
+//afficher le choiceComputer en underscore////////
+let choiceUsr = checkUserLetter();
+console.log(choiceUsr);
+
+compareLetterOnWord();
+
+
+
+
 
 
 
