@@ -5,11 +5,14 @@ let choicesCmp = [
     "maison",
     "voiture",
     "ordinateur",
-    "chien",
+    "pompier",
 ];
 
 //nombre de point du joueur en début de partie
 let playerPoints = 0;
+
+// permet d'afficher des underscores
+let result="";
 
 //------------------------------------------------------MES FONCTIONS------------------------------------------------------------
 
@@ -21,12 +24,13 @@ function generateChoiceRandom(){
 
 //////////////////////////////
 
-
+//fonction
 
 //fonction permettant de vérifier que le joueur a bien saisi une lettre
 function checkUserLetter(){
-   for(let i = 0; i < 5 ; i++){
-    let choiceUser = prompt("merci de saisir une lettre (entre a et z)");
+   for(let i = 0; i < 100 ; i++){
+    let choiceUser = prompt(result + "\n merci de saisir une lettre (entre a et z)");
+    // rajouter le nombre a vérifier
         if (choiceUser.length === 1){
         return choiceUser.toLowerCase();
         }
@@ -39,8 +43,7 @@ function checkUserLetter(){
 
 //fonction permettant comparer la lettre choisi avec le mot de l'ordinateur
 function compareLetterOnWord(){
-    let compare = Array.from(choiceComputer);
-    console.log(compare);
+  
     for(oneletter of compare){
         if(compare.includes(choiceUsr)){
             console.log("oui cette lettre est présente");
@@ -55,15 +58,28 @@ function compareLetterOnWord(){
 
 //-------------------------------------------------- Mon code --------------------------------------------------------------------------------------
 
+//message de bienvenue à l'utilisateur
 alert("Bonjour et bienvenue sur ce jeu du pendu. Prêt à jouer?"); 
 
+
+//génère le mot du PC
 let choiceComputer = generateChoiceRandom();
 console.log(choiceComputer);
 
-//afficher le choiceComputer en underscore////////
-let choiceUsr = checkUserLetter();
-console.log(choiceUsr);
+//fait en sorte que le choix du PC devienne un tableau  ["m","a","i","s","o","n"]
+let compare = Array.from(choiceComputer);
 
+//affiche à l'utilisateur le choix du pc caché derrière des underscores ["_ _ _ _ _ _ _ "]
+for(i=0; i < compare.length; i++){
+     result += "_ "
+}
+
+
+//verifie que l'utilisateur a bien saisi une lettre et pas plusieurs
+let choiceUsr = checkUserLetter();
+// console.log(choiceUsr);
+
+// compare la lettre de l'utilisateur avec le mot du PC
 compareLetterOnWord();
 
 
