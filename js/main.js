@@ -39,11 +39,32 @@ function checkUserLetter(){
 
 //fonction permettant de comparer la lettre choisi avec le mot de l'ordinateur
 function compareLetterOnWord(){
-  
-    // tant que l'utilisateur a des points ou tant qu'il ne trouve pas le mot
+  for(i =0; i< compare.length; i++){
+    console.log("TOUR n° "+ i);
+        for(j = 0; j < compare.length; j++){
+            console.log("\ttest n° "+ j);
+            if(j === choiceUsr[j]){
+                console.log(choiceUsr);
+            }
+            else{
+                console.log("\trien");
+            }
+        }
+  }  
+//         
+//             if(j === choiceUsr)
+//                 console.log(choiceUsr);
+//             else{
+//                 console.log(result += "_ ");
+//             }
+//         }
+//   };
+
+
+    // // tant que l'utilisateur a des points ou tant qu'il ne trouve pas le mot
     for(oneletter of compare){
         if(compare.includes(choiceUsr)){
-            // ne fait rien faire apparaitre la lettre qu'il a séléctionné
+      //ne fait rien faire apparaitre la lettre qu'il a séléctionné
         } 
         else{
             return playerPoints -= 1;
@@ -52,6 +73,8 @@ function compareLetterOnWord(){
 };
 
 //jnsdfionhqsdfnsdfksdf,
+//lm,sf,qfg
+//nsdfnsf
 
 //-------------------------------------------------- Mon code --------------------------------------------------------------------------------------
 
@@ -65,13 +88,14 @@ console.log(choiceComputer);
 
 //fait en sorte que le choix du PC devienne un tableau  ["m","a","i","s","o","n"]
 let compare = Array.from(choiceComputer);
+console.log(compare);
 
 //affiche à l'utilisateur le choix du pc caché derrière des underscores ["_ _ _ _ _ _ _ "]
-for(i=0; i < compare.length; i++){
-    result += "_ "
-}
+// for(i=0; i < compare.length; i++){
+//     result += "_ "
+// }
 
-console.log(compare);
+// console.log(compare);
 
 //verifie que l'utilisateur a bien saisi une lettre et pas plusieurs
 let choiceUsr = checkUserLetter();
