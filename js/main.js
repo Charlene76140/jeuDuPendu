@@ -12,7 +12,7 @@ let choicesCmp = [
 let playerPoints = 7;
 
 // permet d'afficher des underscores
-let result="";
+let result=[];
 
 //------------------------------------------------------MES FONCTIONS------------------------------------------------------------
 
@@ -40,16 +40,21 @@ function checkUserLetter(){
 //fonction permettant de comparer la lettre choisi avec le mot de l'ordinateur
 function compareLetterOnWord(){
   for(i =0; i< compare.length; i++){
-    console.log("TOUR n° "+ i);
-        for(j = 0; j < compare.length; j++){
-            console.log("\ttest n° "+ j);
-            if(j === choiceUsr[j]){
-                console.log(choiceUsr);
-            }
-            else{
-                console.log("\trien");
-            }
-        }
+
+
+
+
+
+    // console.log("TOUR n° "+ i);
+    //     for(j = 0; j < compare.length; j++){
+    //         console.log("\ttest n° "+ j);
+    //         if(j === choiceUsr[j]){
+    //             console.log(choiceUsr);
+    //         }
+    //         else{
+    //             console.log("\trien");
+    //         }
+    //     }
   }  
 //         
 //             if(j === choiceUsr)
@@ -91,11 +96,11 @@ let compare = Array.from(choiceComputer);
 console.log(compare);
 
 //affiche à l'utilisateur le choix du pc caché derrière des underscores ["_ _ _ _ _ _ _ "]
-// for(i=0; i < compare.length; i++){
-//     result += "_ "
-// }
+for(i=0; i < compare.length; i++){
+    result.push("_ ") 
+}
 
-// console.log(compare);
+console.log(result);
 
 //verifie que l'utilisateur a bien saisi une lettre et pas plusieurs
 let choiceUsr = checkUserLetter();
