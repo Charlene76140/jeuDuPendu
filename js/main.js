@@ -9,7 +9,7 @@ let choicesCmp = [
 ];
 
 //nombre de point du joueur en début de partie
-let playerPoints = 0;
+let playerPoints = 7;
 
 // permet d'afficher des underscores
 let result="";
@@ -20,13 +20,9 @@ let result="";
 function generateChoiceRandom(){
     let random = Math.floor(Math.random() * Math.floor(choicesCmp.length));
     return choicesCmp[random];
-}
+};
 
-//////////////////////////////
-
-//fonction
-
-//fonction permettant de vérifier que le joueur a bien saisi une lettre
+//fonction permettant de vérifier que le joueur a bien saisi une lettre et récupérer sa lettre choisie
 function checkUserLetter(){
    for(let i = 0; i < 100 ; i++){
     let choiceUser = prompt(result + "\n merci de saisir une lettre (entre a et z)");
@@ -41,15 +37,16 @@ function checkUserLetter(){
    }    
 };
 
-//fonction permettant comparer la lettre choisi avec le mot de l'ordinateur
+//fonction permettant de comparer la lettre choisi avec le mot de l'ordinateur
 function compareLetterOnWord(){
   
+    // tant que l'utilisateur a des points ou tant qu'il ne trouve pas le mot
     for(oneletter of compare){
         if(compare.includes(choiceUsr)){
-            console.log("oui cette lettre est présente");
+            // faire apparaitre la lettre qu'il a séléctionné
         } 
         else{
-            console.log("non cette lettre n'est pas dans le mot")
+            return playerPoints -= 1;
         }
     } 
 };
@@ -71,7 +68,7 @@ let compare = Array.from(choiceComputer);
 
 //affiche à l'utilisateur le choix du pc caché derrière des underscores ["_ _ _ _ _ _ _ "]
 for(i=0; i < compare.length; i++){
-     result += "_ "
+    result += "_ "
 }
 
 
@@ -82,6 +79,8 @@ let choiceUsr = checkUserLetter();
 // compare la lettre de l'utilisateur avec le mot du PC
 compareLetterOnWord();
 
+
+console.log(playerPoints);
 
 
 
