@@ -4,8 +4,8 @@
 let choicesCmp = [
     "maison",
     "voiture",
-    "ordinateur",
-    "pompier",
+    "chemin",
+    "parking",
 ];
 
 //nombre de point du joueur en début de partie
@@ -14,18 +14,46 @@ let playerPoints = 7;
 // permet d'afficher des underscores
 let result=[];
 
+
 //------------------------------------------------------MES FONCTIONS------------------------------------------------------------
 
-//fonction permettant de générer un choix par l'ordinateur
+// 1 - fonction permettant de générer un choix par l'ordinateur dans la liste choicesCmp
 function generateChoiceRandom(){
     let random = Math.floor(Math.random() * Math.floor(choicesCmp.length));
     return choicesCmp[random];
 };
 
-//fonction permettant de vérifier que le joueur a bien saisi une lettre et récupérer sa lettre choisie
-function checkUserLetter(){
+
+
+
+
+
+
+//2 - fonction pour répartir les lettres du tableau en mot : ["m","a","i","s","o","n"];
+function makeNewArray(){
+    let newArr = Array.from(choiceComputer);
+    return newArr;
+};
+
+
+
+
+
+
+//3 - fonction pour masquer les lettres par des underscores : ["_ _ _ _ _ _ _ "]
+function hideLetter(){
+    for(i=0; i < newArrayLetter.length; i++){
+        result.push(" _ ")
+    }
+};
+
+
+
+
+//4 - fonction permettant de vérifier que le joueur a bien saisi une lettre et récupérer sa lettre choisie
+function getUserLetter(){
    for(let i = 0; i < 100 ; i++){
-    let choiceUser = prompt(result + "\n merci de saisir une lettre (entre a et z)");
+    let choiceUser = prompt(result.join() + "\n merci de saisir une lettre (entre a et z)");
     // rajouter le nombre a vérifier
         if (choiceUser.length === 1){
         return choiceUser.toLowerCase();
@@ -37,61 +65,51 @@ function checkUserLetter(){
    }    
 };
 
-//fonction permettant de comparer la lettre choisi avec le mot de l'ordinateur
+
+
+
+//5 - fonction permettant de comparer la lettre choisi avec le mot de l'ordinateur
 function compareLetterOnWord(){
+    if(newArrayLetter.includes(choiceUsr)){
+        for(i = 0; i < newArrayLetter.length; i++){
+            if(choiceUsr === newArrayLetter[i]){
+                result[i] = choiceUsr;
+                alert(result);
+            }   
+        }
+    }
+    else{
+        alert("Points restants : " + (playerPoints -= 1));
+    }
+};           
 
-    console.log(compare);
-    console.log(result);
-    console.log(choiceUsr);
 
-}
-//     for(oneletter of compare){
-//         if(compare.includes(choiceUsr)){
-//             console.log(choiceUsr);
-//         } 
-//         else{
-//             return false
-//         }
-//     }
-// }            
-           
+
 //-------------------------------------------------- Mon code --------------------------------------------------------------------------------------
 
 //message de bienvenue à l'utilisateur
 console.log("Bonjour et bienvenue sur ce jeu du pendu. Prêt à jouer?"); 
 
-
-//génère le mot du PC
+//le pc choisit un mot dans la liste
 let choiceComputer = generateChoiceRandom();
 console.log(choiceComputer);
 
-//fait en sorte que le choix du PC devienne un tableau  ["m","a","i","s","o","n"]
-let compare = Array.from(choiceComputer);
-// console.log(compare);
+//le mot est mis sous forme de tableau 
+let newArrayLetter = makeNewArray();
+console.log(newArrayLetter)
 
-//affiche à l'utilisateur le choix du pc caché derrière des underscores ["_ _ _ _ _ _ _ "]
-for(i=0; i < compare.length; i++){
-    result.push("_ ") 
-}
-// console.log(result);
+hideLetter();
 
-//verifie que l'utilisateur a bien saisi une lettre et pas plusieurs
-let choiceUsr = checkUserLetter();
+// boucle tant que les points de l'utilisateur ne tombe pas a zéro ou tant que result !== à newArrayLetter
+
+// let choiceUsr = getUserLetter();
 // console.log(choiceUsr);
 
-// compare la lettre de l'utilisateur avec le mot du PC
-compareLetterOnWord();
+// compareLetterOnWord();
 
-
-console.log(playerPoints);
-
-
-
-
-
-
-
-
-
-
+while(playerPoints > 0 || result === newArrayLetter){
+    var choiceUsr = getUserLetter();
+    console.log(choiceUsr);
+    compareLetterOnWord();
+};
 
