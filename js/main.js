@@ -43,7 +43,7 @@ function compareLetterOnWord(){
     // tant que l'utilisateur a des points ou tant qu'il ne trouve pas le mot
     for(oneletter of compare){
         if(compare.includes(choiceUsr)){
-            // faire apparaitre la lettre qu'il a séléctionné
+            // ne fait rien faire apparaitre la lettre qu'il a séléctionné
         } 
         else{
             return playerPoints -= 1;
@@ -51,7 +51,7 @@ function compareLetterOnWord(){
     } 
 };
 
-
+//jnsdfionhqsdfnsdfksdf,
 
 //-------------------------------------------------- Mon code --------------------------------------------------------------------------------------
 
@@ -71,6 +71,7 @@ for(i=0; i < compare.length; i++){
     result += "_ "
 }
 
+console.log(compare);
 
 //verifie que l'utilisateur a bien saisi une lettre et pas plusieurs
 let choiceUsr = checkUserLetter();
