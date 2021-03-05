@@ -26,16 +26,11 @@ function generateChoiceRandom(){
 
 
 
-
-
-
 //2 - fonction pour répartir les lettres du tableau en mot : ["m","a","i","s","o","n"];
 function makeNewArray(){
     let newArr = Array.from(choiceComputer);
     return newArr;
 };
-
-
 
 
 
@@ -46,7 +41,6 @@ function hideLetter(){
         result.push(" _ ")
     }
 };
-
 
 
 
@@ -74,7 +68,7 @@ function compareLetterOnWord(){
         for(i = 0; i < newArrayLetter.length; i++){
             if(choiceUsr === newArrayLetter[i]){
                 result[i] = choiceUsr;
-                alert(result);
+                alert(result.join());
             }   
         }
     }
@@ -85,31 +79,32 @@ function compareLetterOnWord(){
 
 
 
-//-------------------------------------------------- Mon code --------------------------------------------------------------------------------------
+//-------------------------------------------------- MON CODE --------------------------------------------------------------------------------------
 
 //message de bienvenue à l'utilisateur
 console.log("Bonjour et bienvenue sur ce jeu du pendu. Prêt à jouer?"); 
 
-//le pc choisit un mot dans la liste
+//le pc choisit un mot dans la liste (non visible pour l'utilisateur)
 let choiceComputer = generateChoiceRandom();
 console.log(choiceComputer);
 
-//le mot est mis sous forme de tableau 
+//le mot est mis sous forme de tableau (non visible pour l'utilisateur)
 let newArrayLetter = makeNewArray();
 console.log(newArrayLetter)
 
+//les lettres sont cachés pour l'utilisateur
 hideLetter();
 
 // boucle tant que les points de l'utilisateur ne tombe pas a zéro ou tant que result !== à newArrayLetter
-
-// let choiceUsr = getUserLetter();
-// console.log(choiceUsr);
-
-// compareLetterOnWord();
-
-while(playerPoints > 0 || result === newArrayLetter){
-    var choiceUsr = getUserLetter();
-    console.log(choiceUsr);
+while(playerPoints > 0){
+    if (result === newArrayLetter){
+        break;
+    }
+    else{
+        var choiceUsr = getUserLetter();
     compareLetterOnWord();
+    }  
 };
 
+console.log(result);
+console.log(newArrayLetter);
