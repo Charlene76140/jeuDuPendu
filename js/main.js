@@ -6,6 +6,7 @@ let choicesCmp = [
     "maison",
     "chemin",
     "parking",
+    "camping",
 ];
 
 //nombre de point du joueur en début de partie
@@ -75,15 +76,15 @@ function compareLetterOnWord(){
 //-------------------------------------------------- MON CODE --------------------------------------------------------------------------------------
 
 //message de bienvenue à l'utilisateur
-console.log("Bonjour et bienvenue sur ce jeu du pendu. Prêt à jouer?"); 
+alert("Bonjour et bienvenue sur ce jeu du pendu. Prêt à jouer?"); 
 
 //le pc choisit un mot dans la liste (non visible pour l'utilisateur)
 let choiceComputer = generateChoiceRandom();
-console.log(choiceComputer);
+
 
 //le mot est mis sous forme de tableau (non visible pour l'utilisateur)
 let answerArray = makeNewArray();
-console.log(answerArray);
+
 
 //les lettres sont cachés pour l'utilisateur
 hideLetter();
