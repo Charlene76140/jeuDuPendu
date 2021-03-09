@@ -2,7 +2,7 @@
 
 //liste de mot pour le choix PC
 let choicesCmp = [
-    "camion",
+    "pompier",
     "maison",
     "chemin",
     "parking",

@@ -2,11 +2,11 @@
     "version": "0.1.0",
     "configurations": [
         {
-            "name": "Launch localhost",
+            "name": "Launch chrome 8080 debug",
             "type": "chrome",
             "request": "launch",
-            "url": "http://localhost/index.html",
-            "webRoot": "${workspaceFolder}/wwwroot"
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
         },
         {
             "name": "Launch index.html",
