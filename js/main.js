@@ -1,6 +1,6 @@
 //----------------------------------------------------MES VARIABLES GLOBALES-----------------------------------------------------
 
-//liste de mot pour le choix PC
+//list for computer choice
 let choicesCmp = [
     "pompier",
     "maison",
@@ -9,55 +9,49 @@ let choicesCmp = [
     "camping",
 ];
 
-//nombre de point du joueur en début de partie
+//number of player points at the start of the game
 let playerPoints = 7;
 
-// permet d'afficher des underscores
+// display underscores
 let userResultArray=[];
-
 //------------------------------------------------------MES FONCTIONS------------------------------------------------------------
 
-// 1 - fonction permettant de générer un choix par l'ordinateur dans la liste choicesCmp
+// 1 - function used to generate a choice by the computer in the choicesCmp list
 function generateChoiceRandom(){
     let random = Math.floor(Math.random() * Math.floor(choicesCmp.length));
     return choicesCmp[random];
 };
 
-
-
-//2 - fonction pour répartir les lettres du tableau en mot : ["m","a","i","s","o","n"] = > renvoi à la variable answerArray
+// 2- function to divide the letters of the array into words: ["m", "a", "i", "s", "o", "n"] => reference to the answerArray variable
 function makeNewArray(){
     let newArr = Array.from(choiceComputer);
     return newArr;
 };
 
-
-
-//3 - fonction pour masquer les lettres par des underscores : ["_ _ _ _ _ _ _ "] = > renvoi à la variable userResultArray
+//3 - function to hide letters with underscores: ["_ _ _ _ _ _ _"] => reference to the userResultArray variable
 function hideLetter(){
     for(i=0; i < answerArray.length; i++){
         userResultArray.push(" _ ");
     }
 };
 
-
-//4 - fonction permettant de vérifier que le joueur a bien saisi une lettre et récupérer sa lettre choisie = > variable userLetter
+//4 - function to check that the player has entered a letter and retrieve his chosen letter => userLetter variable
 function getUserLetter(){
    for(let i = 0; i < 100 ; i++){
     let choiceUser = prompt(userResultArray.join() + "\n merci de saisir une lettre (entre a et z)");
     // rajouter le nombre a vérifier
         if (choiceUser.length === 1 && isNaN(choiceUser)){
-        return choiceUser.toLowerCase();
+            return choiceUser.toLowerCase();
         }
 
         else{
-        alert("merci de saisir une seule lettre");
+            alert("merci de saisir une seule lettre");
         }
    }    
 };
 
 
-//5 - fonction permettant de comparer la lettre choisi avec le mot de l'ordinateur = > 
+//5 - function allowing to compare the selected letter with the word of the computer
 function compareLetterOnWord(){
     if(answerArray.includes(userLetter)){
         for(i = 0; i < answerArray.length; i++){
@@ -72,23 +66,21 @@ function compareLetterOnWord(){
         return false;
     }
 };           
-
 //-------------------------------------------------- MON CODE --------------------------------------------------------------------------------------
 
-//message de bienvenue à l'utilisateur
+//Welcome
 alert("Bonjour et bienvenue sur ce jeu du pendu. Prêt à jouer?"); 
 
-//le pc choisit un mot dans la liste (non visible pour l'utilisateur)
+//the computer chooses a word from the list (not visible to the user)
 let choiceComputer = generateChoiceRandom();
 
 
-//le mot est mis sous forme de tableau (non visible pour l'utilisateur)
+//the word is put in the form of a table (not visible to the user)
 let answerArray = makeNewArray();
 
 
-//les lettres sont cachés pour l'utilisateur
+//the letters are hidden for the user
 hideLetter();
-
 
 // boucle tant que les points de l'utilisateur ne tombe pas a zéro ou tant que userResultArray n'est pas égal à answerArray
 while(playerPoints > 0){
@@ -98,18 +90,13 @@ while(playerPoints > 0){
    compareLetterOnWord();
 
    // si le tableau contenant les lettres de l'utilisateur est égal au tableau contenant le mot (en format ["m","a","i","s"]) alors arrete de boucler
-    if(Object.is(userResultArray.toString(), answerArray.toString())){
+    if(userResultArray.join() === answerArray.join()){
+        alert("Bravo, c'est gagné!");
         break;
     }
     
     // si les points de l'utilisateur tombe à 0, le joueur a perdu
     else if(playerPoints === 0){
-    alert("C'est perdu... \nLe mot a trouver était : " + choiceComputer)
+        alert("C'est perdu... \nLe mot a trouver était : " + choiceComputer)
     } 
-
 };
-
-// alerte pour les vainqueurs
-if(Object.is(userResultArray.toString(), answerArray.toString())){
-    alert("Bravo, c'est gagné!");
-}
