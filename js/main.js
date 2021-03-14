@@ -82,20 +82,20 @@ let answerArray = makeNewArray();
 //the letters are hidden for the user
 hideLetter();
 
-// boucle tant que les points de l'utilisateur ne tombe pas a zéro ou tant que userResultArray n'est pas égal à answerArray
+// loop until the user's points drop to zero or until userResultArray equals answerArray
 while(playerPoints > 0){
-    // On récupère la lettre entrée par l'utilisateur
+    // get and check the letter of user
     var userLetter = getUserLetter();
-    // On regarde si la lettre de l'utilisateur est bien présente dans le tableau des réponses
+    // check if the letter is in the word
    compareLetterOnWord();
 
-   // si le tableau contenant les lettres de l'utilisateur est égal au tableau contenant le mot (en format ["m","a","i","s"]) alors arrete de boucler
+   // if array with user's letters is equal of array with computer word, so stop the loop
     if(userResultArray.join() === answerArray.join()){
         alert("Bravo, c'est gagné!");
         break;
     }
     
-    // si les points de l'utilisateur tombe à 0, le joueur a perdu
+    // if the user's points fall to 0, the player has lost
     else if(playerPoints === 0){
         alert("C'est perdu... \nLe mot a trouver était : " + choiceComputer)
     } 
