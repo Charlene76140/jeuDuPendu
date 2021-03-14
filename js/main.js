@@ -1,5 +1,4 @@
 //----------------------------------------------------MES VARIABLES GLOBALES-----------------------------------------------------
-
 //list for computer choice
 let choicesCmp = [
     "securite",
@@ -8,15 +7,10 @@ let choicesCmp = [
     "reseau",
     "camping",
 ];
-
 //number of player points at the start of the game
 let playerPoints = 7;
-
-
-
 const commands = ["j","r","q"];
 //------------------------------------------------------MES FONCTIONS------------------------------------------------------------
-
 // 1 - function used to get choice user between "play", "rules" or "exit"
 function getChoiceUserCommand(){
     do {
@@ -109,7 +103,6 @@ function play(){
     }
 };
 //-------------------------------------------------- MON CODE --------------------------------------------------------------------------------------
-
 //commands possibles
 while(true){
     let choiceUserCommand = getChoiceUserCommand();
@@ -124,4 +117,4 @@ while(true){
         alert("A bientôt peut-etre!");
         break;
     }
-}
+};
