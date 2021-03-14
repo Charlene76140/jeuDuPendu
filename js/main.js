@@ -46,14 +46,12 @@ function hideLetter(){
 function getUserLetter(){
    for(let i = 0; i < 100 ; i++){
     let choiceUser = prompt(userResultArray.join() + "\n merci de saisir une lettre (entre a et z)");
-    // rajouter le nombre a vérifier
-        if (choiceUser.length === 1 && isNaN(choiceUser)){
-            return choiceUser.toLowerCase();
-        }
-
-        else{
-            alert("merci de saisir une seule lettre");
-        }
+    if (choiceUser.length === 1 && isNaN(choiceUser)){
+        return choiceUser.toLowerCase();
+    }
+    else{
+        alert("merci de saisir une seule lettre");
+    }
    }    
 };
 
